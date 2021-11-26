@@ -49,7 +49,7 @@ CFG_FILE=./config/tnlooker.cfg
 function makeConfig()
     # Create the default config file if it does not exist. 
 {
-    if [[ ! -f $CFG_FILE ]];
+    if [[ ! -f $CFG_FILE ]]
     then
         echo "baseURL='http://apilayer.net'" > $CFG_FILE
         echo "endpoint='/api/validate'" >> $CFG_FILE
@@ -66,7 +66,7 @@ function updateConfig()
     param=$1
     value=$2
     sed -i "s/$param='.*'/$param='$value'/g" $CFG_FILE
-    if [[ $? -ne 0 ]];
+    if [[ $? -ne 0 ]]
     then
         echo "There was an issue updating the config file. Check your params/values and CFG_File."
     else
@@ -80,6 +80,12 @@ function updateConfig()
 ##################################################################################
 #                      GET -OPTIONS
 ##################################################################################
+# If no arguments display help.
+if [[ -z "$@" ]]
+then
+    help; exit
+fi
+
 # Create an array to store the output options. 
 declare -a options=()
 
@@ -110,13 +116,13 @@ columns=$(echo -e "${options[@]}" | sed 's/ /,/g')
 shift $(($OPTIND -1))
 
 # Set columns to all by default. 
-if [[ -z "$columns"  ]];
+if [[ -z "$columns"  ]]
 then
 	columns=*
 fi
 
 # Make sure we have an access key. 
-if [[ -z "$access_key" ]];
+if [[ -z "$access_key" ]]
 then
     echo -e "No Access Key Set. Run ./tnlooker.sh -A [access key]"
     exit 101
@@ -124,7 +130,7 @@ fi
 ##################################################################################
 
 # Create an array to store the TNs. 
-if [[ -n "$TN_FILE" ]];
+if [[ -n "$TN_FILE" ]]
 then
     declare -a tns=($(cat $TN_FILE))
 else
@@ -141,13 +147,13 @@ function checkDB()
 {
     local QUERY="SELECT id FROM tnlooker_db.numbers WHERE $column = ${num} $@"
     id=$(echo $QUERY | mysql --defaults-extra-file=$DB_FILE -s)
-    if [[ $? -ne 0 ]];
+    if [[ $? -ne 0 ]]
     then 
         echo -e "\nFatal MySQL Error Received. Exiting."
         exit 500
     fi
 
-    if [[ -z $id ]]; 
+    if [[ -z $id ]]
     then
         return 1
     else
@@ -166,7 +172,7 @@ function checkRecord_age()
         FROM numbers WHERE id = $id;"
 
     local record_age=$(echo $QUERY | mysql --defaults-extra-file=$DB_FILE -s)
-    if [[ $record_age -ne 0 ]]; 
+    if [[ $record_age -ne 0 ]]
     then
         return 1
     else
@@ -192,7 +198,7 @@ function getData()
 function insertData()
     # Inserts data from the APICall into the DB. 
 {
-    QUERY="INSERT INTO numbers 
+    local QUERY="INSERT INTO numbers 
         (
             number,
             local_format,
@@ -225,7 +231,7 @@ function insertData()
 function updateData()
     # Updates an existing record in the DB with data from the API Call. 
 {
-    QUERY="UPDATE numbers 
+    local QUERY="UPDATE numbers 
         SET 
             number = '$number',
             local_format = '$local_format',
@@ -246,7 +252,7 @@ function updateData()
 function selectData()
     # Selects the TN's information from the DB.
 {
-    QUERY="SELECT $columns FROM numbers WHERE id = $id;"
+    local QUERY="SELECT $columns FROM numbers WHERE id = $id;"
     output=$(echo -e "${QUERY}" | mysql --defaults-extra-file=$DB_FILE -s --table)
     # if [[ $record_age -ne 0 ]]; 
     # then
@@ -260,12 +266,12 @@ for ((i=0; i < ${#tns[@]}; i++))
 do
     num=$(echo ${tns[$i]} | tr -dc '[:digit:]|\n')
 
-    if [[ ${num} =~ $numberFormat ]]; 
+    if [[ ${num} =~ $numberFormat ]]
     then
         echo "Checking DB for TN $num"
         column='number'; checkDB
         
-        if [[ $? -ne 0 ]];
+        if [[ $? -ne 0 ]]
         then
             # echo "Record does not exist! Doing 11 digit curl!"
             # json=$(cat wip/${num}.json); getData
@@ -276,7 +282,7 @@ do
             # echo "Checking Record Age"
             checkRecord_age
             
-            if [[ $? -ne 0 ]]; 
+            if [[ $? -ne 0 ]] 
             then
                 # echo "Record too old! Doing 11 digit curl!"
                 # json=$(cat wip/${num}.json); getData
@@ -290,10 +296,10 @@ do
             
         fi
 
-    elif [[ ${num} =~ $localFormat ]]; 
+    elif [[ ${num} =~ $localFormat ]]
     then
         read -p "TN $num is only 10 digits. Enter 2 letter Country Code: " country_code
-        if [[ "$country_code" =~ ^[a-zA-Z]{2}$ ]]; 
+        if [[ "$country_code" =~ ^[a-zA-Z]{2}$ ]] 
         then
             echo "Checking DB for TN $num"
             column='local_format'; checkDB "AND country_code = '$country_code'"
@@ -309,7 +315,7 @@ do
                 # echo "Checking Record Age"
                 checkRecord_age
                 
-                if [[ $? -ne 0 ]]; 
+                if [[ $? -ne 0 ]]
                 then
                     # echo "Record too old! Doing 10 digit curl!"
                     # json=$(cat wip/${num}.json); getData
