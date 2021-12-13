@@ -1,10 +1,10 @@
 FROM mysql:latest
 
-RUN mkdir /opt/tnlooker
-
-COPY $PWD/mysql_secrets.cfg /opt/tnlooker/
+ENV MYSQL_DATABASE=tnlooker_db
 
 COPY $PWD/build_db.sql /docker-entrypoint-initdb.d/
+
+EXPOSE 3306 
 
 ENTRYPOINT ["/entrypoint.sh"]
 

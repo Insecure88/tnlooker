@@ -1,0 +1,14 @@
+version: "3.0"
+services:
+  db:
+    container_name: tnlooker_db
+    image: insecure88/tnlooker_db:latest
+    environment: 
+      MYSQL_ROOT_PASSWORD: turtle
+    ports: 
+      - 3306:3306
+    volumes:
+      - "data:/var/lib/mysql"
+
+volumes:
+  data:
