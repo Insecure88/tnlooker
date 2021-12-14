@@ -31,9 +31,9 @@ function help()
         -n - number         Display the number in 11 digit format. 
         -l - local_format   Display the number in local format (without the country prefix)
         -i - int_format     Display the number in 
-        -p - country_prefix Disiplay the country prefix number 
+        -p - country_prefix Display the country prefix number 
         -o - country_code   Display the 2 letter country code 
-        -a - country_name   Disiplay the entire country name
+        -a - country_name   Display the entire country name
         -u - location       Display the town/city/state of the number. 
         -c - carrier        Display the carrier name. 
         -t - line_type      Display the line type (mobile, landline, or VOIP)
