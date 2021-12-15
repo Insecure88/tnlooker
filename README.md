@@ -29,8 +29,6 @@ This project is purely for educational purposes and will be expanded upon as tim
 ### Demo
 [![asciicast](https://asciinema.org/a/diNog3rF3Rh1uoN5TYRhcNU55.svg)](https://asciinema.org/a/diNog3rF3Rh1uoN5TYRhcNU55)
 
-<script id="asciicast-diNog3rF3Rh1uoN5TYRhcNU55" src="https://asciinema.org/a/diNog3rF3Rh1uoN5TYRhcNU55.js" async></script>
-
 ---
 ## Installation
 ### Pre-Requisites
