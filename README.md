@@ -6,6 +6,7 @@
     - [Description](#description)
     - [How It Works](#how-it-works)
     - [Purpose](#purpose)
+    - [Demo](#demo)
   - [Installation](#installation)
     - [Pre-Requisites](#pre-requisites)
     - [Quick Installation](#quick-installation)
@@ -24,6 +25,11 @@ This shell script will perform the lookups by making requests to the NumVerify A
 
 ### Purpose
 This project is purely for educational purposes and will be expanded upon as time permits. 
+
+### Demo
+[![asciicast](https://asciinema.org/a/diNog3rF3Rh1uoN5TYRhcNU55.svg)](https://asciinema.org/a/diNog3rF3Rh1uoN5TYRhcNU55)
+
+<script id="asciicast-diNog3rF3Rh1uoN5TYRhcNU55" src="https://asciinema.org/a/diNog3rF3Rh1uoN5TYRhcNU55.js" async></script>
 
 ---
 ## Installation
