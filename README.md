@@ -33,7 +33,8 @@ This project is purely for educational purposes and will be expanded upon as tim
 ## Installation
 ### Pre-Requisites
 1. Requires Docker and Docker-Compose. 
-2. Requires [jq][2] for parsing JSON data. 
+2. Requires mysql-client[4]
+3. Requires [jq][2] for parsing JSON data. 
 
 ### Quick Installation
 1. Clone the repository.
@@ -50,6 +51,7 @@ This project is purely for educational purposes and will be expanded upon as tim
 [1]: https://numverify.com/product
 [2]: https://linuxcommandlibrary.com/man/jq
 [3]: https://github.com/Insecure88/tnlooker/blob/master/LICENSE
+[4]: https://packages.ubuntu.com/focal/mysql-client-core-8.0
 
 ---
 
