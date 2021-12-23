@@ -33,7 +33,7 @@ This project is purely for educational purposes and will be expanded upon as tim
 ## Installation
 ### Pre-Requisites
 1. Requires Docker and Docker-Compose. 
-2. Requires mysql-client[4]
+2. Requires [mysql-client][4]
 3. Requires [jq][2] for parsing JSON data. 
 
 ### Quick Installation
